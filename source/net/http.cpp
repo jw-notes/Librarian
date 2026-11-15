@@ -35,6 +35,9 @@ std::string log_target(const std::string& url) {
     return u.origin() + url_path_only(u.path).substr(0, 120);
 }
 
+thread_local bool t_skip_verification = false;
+
+
 HttpResponse perform(const HttpRequest& request, const BodySink& sink, uint64_t* total_out,
                      const HeadHook& head = nullptr) {
     HttpResponse response;
@@ -74,7 +77,9 @@ HttpResponse perform(const HttpRequest& request, const BodySink& sink, uint64_t*
             if (!redirect && method != "HEAD" && (!head || head(raw)) && !data.empty()) sink(data.data(), data.size());
         } else {
             LOGD("HTTP %s %s", method.c_str(), log_target(url).c_str());
+            t_skip_verification = !request.verify_certificate;
             raw = http_perform(method, url, body, headers, request.timeout_seconds, sink, head);
+            t_skip_verification = false;
         }
         response.status = raw.status;
         response.content_type = raw.content_type;
@@ -214,5 +219,7 @@ std::string describe_failure(const HttpResponse& r) {
     if (!r.error.empty()) return r.error;
     return "No response from the server. Check the address and the network connection.";
 }
+
+bool http_skip_verification() { return t_skip_verification; }
 
 }  // namespace lib

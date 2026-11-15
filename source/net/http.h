@@ -30,6 +30,10 @@ struct HttpRequest {
     // Do not attach the per-origin stored Basic credentials (used for session/
     // cookie requests, which carry their own auth and must not trip limiters).
     bool no_auto_auth = false;
+    // false: the server's certificate is not checked. Only for content whose
+    // integrity is checked otherwise (the software update, against the
+    // SHA-256 that api.github.com gives over a checked connection).
+    bool verify_certificate = true;
 };
 
 struct HttpResponse {
@@ -80,6 +84,10 @@ using HeadHook = std::function<bool(const HttpRawResult& head)>;
 HttpRawResult http_perform(const std::string& method, const std::string& url, const std::string& body,
                            const std::vector<std::pair<std::string, std::string>>& headers, int timeout_seconds,
                            const BodySink& sink, const HeadHook& head = nullptr);
+
+// Whether the request being performed on this thread skips the certificate
+// check (HttpRequest::verify_certificate), for the backends.
+bool http_skip_verification();
 
 // Requests to `origin` (e.g. "http://zim.librarian") are answered in-process
 // by `handler` instead of the network: Librarian's own ZIM files are served

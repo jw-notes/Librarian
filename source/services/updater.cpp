@@ -107,14 +107,23 @@ void* download_main(void*) {
     lib::HttpRequest r;
     r.url = url;
     r.timeout_seconds = 60;
-    const lib::HttpResponse resp = lib::http_download(
-        r, temp,
-        [](uint64_t done, uint64_t total) {
-            g_done = done;
-            if (total) g_total = total;
-            return !g_cancel.load();
-        },
-        true);
+    auto progress = [](uint64_t done, uint64_t total) {
+        g_done = done;
+        if (total) g_total = total;
+        return !g_cancel.load();
+    };
+    lib::HttpResponse resp = lib::http_download(r, temp, progress, true);
+    if (!resp.ok() && resp.status < 0 && !g_cancel && !sha.empty()) {
+        // GitHub keeps release files on release-assets.githubusercontent.com,
+        // whose certificate (Let's Encrypt, ISRG Root X1) the console does not
+        // know: the connection is refused (0x80431073 on firmware 14.00). The
+        // file is fetched again without that check; it is accepted only if it
+        // matches the SHA-256 api.github.com gave over a checked connection.
+        LOG("update: %s; trying again without the certificate check (the file is checked by its SHA-256)",
+            resp.error.c_str());
+        r.verify_certificate = false;
+        resp = lib::http_download(r, temp, progress, true);
+    }
     if (g_cancel) {
         lib::remove_file(temp + ".part");
         g_state = State::Available;

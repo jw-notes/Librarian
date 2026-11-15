@@ -144,7 +144,7 @@ HttpRawResult http_perform(const std::string& method, const std::string& full_ur
     }
     lib_http_set_auto_redirect(request, 0);
     lib_http_set_recv_timeout(request, (uint32_t)timeout_seconds * 1000000u);
-    if (g_insecure) sceHttpsDisableOption(request, kVerifyFlags);
+    if (g_insecure || http_skip_verification()) sceHttpsDisableOption(request, kVerifyFlags);
     for (const auto& [k, v] : headers) sceHttpAddRequestHeader(request, k.c_str(), v.c_str(), 0);
 
     int rc = sceHttpSendRequest(request, body.empty() ? nullptr : body.data(), body.size());
