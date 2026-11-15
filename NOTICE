@@ -1,0 +1,238 @@
+Librarian
+Copyright (C) 2026 jw-notes <https://github.com/jw-notes>
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program (the file LICENSE). If not, see <https://www.gnu.org/licenses/>.
+
+SPDX-License-Identifier: GPL-3.0-or-later (Librarian's original work)
+
+
+1. WHAT THIS LICENCE COVERS
+---------------------------
+
+Librarian's original work is: source/, tests/ (other than the third-party
+test data below), tools/ (other than tools/toolchain/), assets/, the Makefile,
+version.json, README.md, SOURCE.md and this NOTICE. It is licensed under
+GPL-3.0-or-later as stated above. Its source files carry the header
+"SPDX-License-Identifier: GPL-3.0-or-later / Copyright (C) 2026 jw-notes
+<https://github.com/jw-notes>" and point to this file for the terms in
+section 2.
+
+Third-party material keeps its own copyright and licence and is NOT relicensed
+by this project:
+
+  third_party/          vendored libraries and fonts (section 4)
+  tools/toolchain/      the OpenOrbis PS4 Toolchain (downloaded, not part of
+                        this project's source)
+  licenses/             verbatim copies of third-party licence texts
+  tests/docs/           sample books and audio made or downloaded for testing
+                        (not part of the source; see tests/docs/README.md)
+  tests/data/           test data from other sources, used only by the tests:
+     rar.rar, rar5_*.rar           libarchive's test archives (BSD-2-Clause,
+                                   licenses/libarchive.txt)
+     volcano.html                  the Wikipedia article "Volcano" by Wikipedia
+                                   contributors, CC BY-SA 4.0
+                                   (https://en.wikipedia.org/wiki/Volcano)
+     kiwix_*.html                  pages captured from Kiwix ZIM files
+                                   (freeCodeCamp, "Food for Preppers" and a
+                                   shell guide); their authors' terms apply
+     calibre_*.xml, abs/*.json     answers recorded from local Calibre-Web and
+                                   Audiobookshelf test servers
+
+
+2. ADDITIONAL TERMS (GNU GPL VERSION 3, SECTION 7)
+--------------------------------------------------
+
+The GNU GPL already requires anyone who conveys this program, modified or not,
+to keep intact its copyright notices, the notices that the GPL applies and the
+notices of the absence of any warranty (sections 4 and 5), and to mark
+modified versions as changed with a relevant date (section 5(a)).
+
+In addition, the following terms apply to all of Librarian's original work
+(section 1), as permitted by sections 7(b) and 7(c) of the GNU GPL version 3.
+They apply to any copy, port, translation or modified version of that
+material, in whole or in part, however it was made.
+
+  1. Attribution (section 7(b)). You must keep this NOTICE file, and the
+     copyright notice "Copyright (C) 2026 jw-notes" and the licence notices
+     in the source files, intact. Any work that contains this material must
+     credit it, in its README or credits, and in the Appropriate Legal
+     Notices (for example an About or credits screen) if it has an
+     interactive user interface, with at least:
+
+         Based on Librarian by jw-notes
+         https://github.com/jw-notes
+
+  2. Third-party credits (section 7(b)). You must keep the credits to every
+     other author listed in sections 4 and 5, in the README and on the About
+     screen, for any of their work you keep.
+
+  3. No misrepresentation of origin (section 7(c)). You must not present this
+     material, or a modified version of it, as your own original work or as
+     written from scratch. Modified versions must be marked as changed from
+     the original, with the date of the change.
+
+These terms do not stop you adding your own copyright notices for your own
+changes, or renaming the program; they do not apply to the third-party
+material listed in section 4, which keeps its own licence.
+
+How the terms meet section 7: they are of the kinds section 7 permits
+(7(b): preservation of specified reasonable legal notices and author
+attributions, in the material or in the Appropriate Legal Notices displayed
+by works containing it; 7(c): prohibiting misrepresentation of the origin of
+the material and requiring modified versions to be marked as different from
+the original). Every source file of the original work says that additional
+terms apply and points here, as section 7 requires; being permitted
+additional terms rather than "further restrictions", they stay with the
+material. Section 5(d) separately requires each interactive user interface of
+a modified version to keep displaying Appropriate Legal Notices; Librarian's
+are in Settings > About.
+
+
+3. THE PS4 PACKAGE AND MUPDF (AGPL-3.0)
+---------------------------------------
+
+PDF support uses MuPDF 1.24.11, Copyright (C) Artifex Software, Inc., which is
+licensed under the GNU Affero General Public License version 3 or (at your
+option) any later version. When build/mupdf-<target>/libmupdf.a is present,
+MuPDF and the libraries bundled with it are linked statically into the
+program, as they are in the published PS4 package. Librarian uses the official
+release unmodified (mupdf-1.24.11-source.tar.gz, SHA-256
+191227b96775f6705ef7d9551187511932b519273b34535a331491cf7d98163f, checked
+against third_party/mupdf on 2026-10-30); it is built by tools/build_mupdf.sh.
+
+The package is therefore a combined work. Section 13 of the GNU GPL v3 permits
+combining GPL-3.0 code with AGPL-3.0 code: Librarian's own code stays under
+GPL-3.0-or-later, and the combination as a whole is conveyed under the terms
+of the GNU AGPL version 3 (licenses/AGPL-3.0.txt).
+
+Anyone who distributes the package (the .pkg, or any other build that
+includes MuPDF), including an unmodified copy, must:
+
+  * give recipients the licence texts: LICENSE (GPL-3.0),
+    licenses/AGPL-3.0.txt, this NOTICE and the licenses/ folder;
+  * provide the Corresponding Source of the whole package under the terms of
+    section 6 of the (A)GPL, either together with the package or through a
+    written offer or equivalent access at no further charge. That source is:
+      - Librarian's source (this project) at the same version;
+      - MuPDF 1.24.11, including its thirdparty/ folder;
+      - the other components in section 4, at the versions recorded in
+        third_party/PROVENANCE.json;
+      - the source of the OpenOrbis modules in the package;
+      - the scripts used to build and package it: Makefile,
+        tools/fetch_deps.py, tools/build_mupdf.sh, tools/build.ps1,
+        tools/build.sh, tools/package.py and tools/make_source_release.py;
+  * keep all copyright, licence and warranty notices intact (section 2).
+
+What the build provides for this: the package itself contains LICENSE, this
+NOTICE and every licence text in its licenses/ folder (/app0/licenses on the
+console). tools/build.sh also writes, next to the .pkg in
+dist/<release>/: LICENSE, NOTICE, SOURCE.md (how to rebuild), licenses/,
+librarian-<version>-source.tar.gz, mupdf-1.24.11-source.tar.gz (the official
+archive), openorbis-modules-source.tar.gz and SHA256SUMS. Publishing those
+files together with the package satisfies the source requirement above.
+
+Section 13 of the AGPL (remote network interaction): if you modify the
+program and let users interact with your modified version remotely over a
+network, you must offer those users the Corresponding Source of your version.
+Librarian is an application that runs on the console and is not offered as a
+network service.
+
+A build without MuPDF (no libmupdf.a: PDFs are then reported as unsupported)
+contains no AGPL-licensed code and is GPL-3.0-or-later as a whole.
+
+
+4. THIRD-PARTY COMPONENTS
+-------------------------
+
+All are compiled into the program or shipped in the package unless noted.
+Full licence texts are in licenses/ and alongside the sources in third_party/.
+
+Component              Version    Copyright                         Licence                      Text
+---------------------  ---------  --------------------------------  ---------------------------  ------------------------------
+MuPDF                  1.24.11    Artifex Software, Inc.            AGPL-3.0-or-later            licenses/AGPL-3.0.txt
+ bundled with MuPDF:
+  FreeType             2.13.0     The FreeType Project              FTL (or GPL-2.0-or-later)    licenses/MuPDF-FreeType-FTL.txt
+  HarfBuzz             (MuPDF)    Google, Inc., Ebrahim Byagowi     "Old MIT"                    licenses/MuPDF-HarfBuzz.txt
+                                  and others
+  Gumbo                (MuPDF)    Google Inc.                       Apache-2.0                   licenses/MuPDF-gumbo-Apache-2.0.txt
+  libjpeg              (MuPDF)    Thomas G. Lane, Guido Vollbeding  IJG licence                  licenses/MuPDF-libjpeg-IJG.txt
+  Little CMS (lcms2mt) (MuPDF)    Marti Maria Saguer                MIT                          licenses/MuPDF-lcms2.txt
+  MuJS                 (MuPDF)    Artifex Software, Inc.            ISC                          licenses/MuPDF-MuJS-ISC.txt
+  zlib                 (MuPDF)    Jean-loup Gailly, Mark Adler      zlib                         licenses/MuPDF-zlib.txt
+  jbig2dec             (MuPDF)    Artifex Software, Inc.            AGPL-3.0-or-later            licenses/MuPDF-jbig2dec.txt
+  OpenJPEG             (MuPDF)    Université catholique de          BSD-2-Clause                 licenses/MuPDF-OpenJPEG.txt
+                                  Louvain and other contributors
+  extract              (MuPDF)    Artifex Software, Inc.            AGPL-3.0-or-later            licenses/AGPL-3.0.txt
+FAAD2                  2.11.4     M. Bakker, Nero AG                GPL-2.0-or-later             licenses/FAAD2-GPL-2.0.txt
+minimp3                ea99364    lieff                             CC0-1.0                      licenses/minimp3-CC0-1.0.txt
+dr_flac                dfe8377    David Reid                        Public domain or MIT-0       licenses/dr_flac.txt
+libopus (Opus audio)   1.5.2      Xiph.Org, Skype Limited, Octasic, BSD-3-Clause                 licenses/libopus-BSD-3-Clause.txt
+                                  Jean-Marc Valin, Timothy B.
+                                  Terriberry, CSIRO, Gregory
+                                  Maxwell, Mark Borgerding, Erik de
+                                  Castro Lopo, Mozilla, Amazon
+libarchive (RAR/RAR5)  3.7.7      Tim Kientzle and contributors     BSD-2-Clause (BLAKE2 files:  licenses/libarchive.txt
+                                                                    CC0-1.0, OpenSSL or
+                                                                    Apache-2.0)
+libwebp (decoder)      1.4.0      Google Inc.                       BSD-3-Clause                 licenses/libwebp.txt
+miniz                  3.0.2      Rich Geldreich, RAD Game Tools,   MIT                          licenses/miniz.txt
+                                  Valve Software
+zstd (decoder)         1.5.6      Meta Platforms, Inc. and          BSD-3-Clause                 licenses/zstd-BSD-3-Clause.txt
+                                  affiliates
+xz-embedded (decoder)  2024-12-30 The XZ Embedded authors and       0BSD                         licenses/xz-embedded-0BSD.txt
+                                  contributors
+stb_image,             f58f558    Sean Barrett                      MIT or public domain         licenses/stb.txt
+stb_image_write,                                                    (Unlicense)
+stb_truetype,
+stb_vorbis (Vorbis
+ audio)
+Noto Sans, Noto Serif, 2.015 /    The Noto Project Authors          SIL OFL 1.1                  licenses/Noto-fonts-OFL-1.1.txt
+Noto Sans Mono         2.014
+Noto Sans JP           2.004      Adobe (Reserved Font Name          SIL OFL 1.1                  licenses/NotoSansJP-OFL-1.1.txt
+ (Japanese interface)             'Source')
+Monocypher             4.0.2      Loup Vaillant, Michael Savage,    CC0-1.0 or BSD-2-Clause      licenses/Monocypher.txt
+ (settings encryption)            Fabio Scotoni
+GoldHEN Plugins SDK    bcea3c7    GoldHEN                           MIT                          licenses/GoldHEN-Plugins-SDK-MIT.txt
+ (SDK command wrappers            (credits: SiSTRo, ctn123, OSM,
+ and syscall stub: USB            jocover, bucanero, OpenOrbis
+ sandbox escape)                  Team, nik)
+OpenOrbis PS4         0.5.2      OpenOrbis contributors            GPL-3.0                      LICENSE (same text)
+ Toolchain modules
+ (libc.prx,
+ libSceFios2.prx,
+ right.sprx, in the
+ package)
+ musl libc (OpenOrbis  (toolchain) Rich Felker et al.               MIT                          licenses/OpenOrbis-musl.txt
+ fork, linked)
+ LLVM libc++,          (toolchain) LLVM Project contributors         Apache-2.0 WITH              (no notice required for
+ compiler-rt (linked)                                                LLVM-exception               compiled form)
+
+GPL-2.0-or-later (FAAD2), and the permissive licences above, are compatible
+with GPL-3.0 and AGPL-3.0; FAAD2 is used under version 3 of the GPL. FreeType
+is dual-licensed; its FTL credit is given below.
+
+Notices these licences require to be reproduced:
+
+  Code from FAAD2 is copyright (c) Nero AG, www.nero.com
+  This software is based in part on the work of the Independent JPEG Group.
+  Portions of this software are copyright (C) 2023 The FreeType Project
+  (www.freetype.org). All rights reserved.
+
+
+5. CREDITS AND REFERENCES
+-------------------------
+
+  KindleUnpack and Calibre (GPL-3.0): references for the MOBI/KF8 formats.
+  GoldHEN by SiSTR0 and the GoldHEN team: the homebrew enabler, its Plugins
+    SDK (MIT, section 4) and its FTP server, through which USB drives are
+    reached.

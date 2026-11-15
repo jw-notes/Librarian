@@ -1,0 +1,16 @@
+# Build output, packages and console logs (build/console/)
+build/
+dist/
+__pycache__/
+*.pyc
+
+# Toolchain (copied locally; see README) and download caches
+tools/toolchain/
+third_party/_downloads/
+# MuPDF source (fetched by tools/fetch_deps.py --mupdf)
+third_party/mupdf/
+
+# Tests, their media and the test-only tools (tests/tools/): kept in the
+# development tree, never uploaded or released (tools/make_source_release.py
+# leaves them out too)
+tests/

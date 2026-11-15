@@ -1,0 +1,149 @@
+[
+  {
+    "name": "stb_image",
+    "license": "MIT / public domain",
+    "url": "https://raw.githubusercontent.com/nothings/stb/f58f558c120e9b32c217290b80bad1a0729fbb2c/stb_image.h",
+    "sha256": "594c2fe35d49488b4382dbfaec8f98366defca819d916ac95becf3e75f4200b3",
+    "files": 1
+  },
+  {
+    "name": "stb_truetype",
+    "license": "MIT / public domain",
+    "url": "https://raw.githubusercontent.com/nothings/stb/f58f558c120e9b32c217290b80bad1a0729fbb2c/stb_truetype.h",
+    "sha256": "ecd30b05e0dd4fea3a13c26810dd9e1992dc379049482c393d5a19e6b5090aab",
+    "files": 1
+  },
+  {
+    "name": "stb_image_write",
+    "license": "MIT / public domain",
+    "url": "https://raw.githubusercontent.com/nothings/stb/f58f558c120e9b32c217290b80bad1a0729fbb2c/stb_image_write.h",
+    "sha256": "cbd5f0ad7a9cf4468affb36354a1d2338034f2c12473cf1a8e32053cb6914a05",
+    "files": 1
+  },
+  {
+    "name": "miniz",
+    "license": "MIT",
+    "url": "https://github.com/richgel999/miniz/releases/download/3.0.2/miniz-3.0.2.zip",
+    "sha256": "ada38db0b703a56d3dd6d57bf84a9c5d664921d870d8fea4db153979fb5332c5",
+    "files": 3
+  },
+  {
+    "name": "libwebp",
+    "license": "BSD-3-Clause",
+    "url": "https://github.com/webmproject/libwebp/archive/refs/tags/v1.4.0.tar.gz",
+    "sha256": "12af50c45530f0a292d39a88d952637e43fb2d4ab1883c44ae729840f7273381",
+    "files": 179
+  },
+  {
+    "name": "libarchive",
+    "license": "BSD-2-Clause",
+    "url": "https://github.com/libarchive/libarchive/releases/download/v3.7.7/libarchive-3.7.7.tar.gz",
+    "sha256": "4cc540a3e9a1eebdefa1045d2e4184831100667e6d7d5b315bb1cbc951f8ddff",
+    "files": 213
+  },
+  {
+    "name": "minimp3",
+    "license": "CC0-1.0",
+    "url": "https://raw.githubusercontent.com/lieff/minimp3/ea99364f61c14656440e8d77e9c233ccf3124633/minimp3.h",
+    "sha256": "57e437c5c1f0e8b243885d3929c8973b5e6c778451e0100ab4251d19915cb3ad",
+    "files": 1
+  },
+  {
+    "name": "minimp3 licence",
+    "license": "CC0-1.0",
+    "url": "https://raw.githubusercontent.com/lieff/minimp3/ea99364f61c14656440e8d77e9c233ccf3124633/LICENSE",
+    "sha256": "6a1ee543e5282cd9061881edf462e6fdab181f328da71fc2c9a6950a80e94d01",
+    "files": 1
+  },
+  {
+    "name": "dr_flac",
+    "license": "Public domain / MIT-0",
+    "url": "https://raw.githubusercontent.com/mackron/dr_libs/dfe8377631000664666519fdb83da193fd8037f4/dr_flac.h",
+    "sha256": "111144e778f55738db6851cb226015c419e00d04b916a09506d4856d9cff945c",
+    "files": 1
+  },
+  {
+    "name": "stb_vorbis",
+    "license": "MIT / public domain",
+    "url": "https://raw.githubusercontent.com/nothings/stb/f58f558c120e9b32c217290b80bad1a0729fbb2c/stb_vorbis.c",
+    "sha256": "4c7cb2ff1f7011e9d67950446b7eb9ca044f2e464d76bfbb0b84dd2e23e65636",
+    "files": 1
+  },
+  {
+    "name": "libopus",
+    "license": "BSD-3-Clause",
+    "url": "https://downloads.xiph.org/releases/opus/opus-1.5.2.tar.gz",
+    "sha256": "65c1d2f78b9f2fb20082c38cbe47c951ad5839345876e46941612ee87f9a7ce1",
+    "files": 319
+  },
+  {
+    "name": "FAAD2",
+    "license": "GPL-2.0-or-later",
+    "url": "https://github.com/knik0/faad2/archive/refs/tags/2.11.4.tar.gz",
+    "sha256": "ee479ccbae4a8387ab696e6f21a481bd83fe3881471cafa81b4ae59d7d3aed43",
+    "files": 102
+  },
+  {
+    "name": "zstd",
+    "license": "BSD-3-Clause",
+    "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-1.5.6.tar.gz",
+    "sha256": "8c29e06cf42aacc1eafc4077ae2ec6c6fcb96a626157e0593d5e82a34fd403c1",
+    "files": 36
+  },
+  {
+    "name": "xz-embedded",
+    "license": "0BSD",
+    "url": "https://github.com/tukaani-project/xz-embedded/archive/refs/tags/v2024-12-30.tar.gz",
+    "sha256": "ee12fa8c49c9c0ef4a144af4234d2530d786c1ce14247a7d5fc92a946628977d",
+    "files": 16
+  },
+  {
+    "name": "Monocypher",
+    "license": "CC0-1.0 or BSD-2-Clause",
+    "url": "https://github.com/LoupVaillant/Monocypher/archive/refs/tags/4.0.2.tar.gz",
+    "sha256": "bc1ca30b1b2654e4e7daf2492c0d204200e55137f23fda6b7142fd7d523bd6b4",
+    "files": 3
+  },
+  {
+    "name": "Noto Sans JP",
+    "license": "SIL OFL 1.1",
+    "url": "https://github.com/notofonts/noto-cjk/raw/Sans2.004/Sans/SubsetOTF/JP/NotoSansJP-Regular.otf",
+    "sha256": "dff723ba59d57d136764a04b9b2d03205544f7cd785a711442d6d2d085ac5073",
+    "files": 1
+  },
+  {
+    "name": "GoldHEN Plugins SDK",
+    "license": "MIT",
+    "url": "https://github.com/GoldHEN/GoldHEN_Plugins_SDK/archive/bcea3c7ef01dac6d7f9f49ebf9e90fe66d86f5f7.tar.gz",
+    "sha256": "6257675780de53c5bface9821db92675cf0d908301efd3af8134603fda6dd957",
+    "files": 8
+  },
+  {
+    "name": "Noto Sans",
+    "license": "SIL OFL 1.1",
+    "url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSans-v2.015/NotoSans-v2.015.zip",
+    "sha256": "0c34df072a3fa7efbb7cbf34950e1f971a4447cffe365d3a359e2d4089b958f5",
+    "files": 5
+  },
+  {
+    "name": "Noto Serif",
+    "license": "SIL OFL 1.1",
+    "url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSerif-v2.015/NotoSerif-v2.015.zip",
+    "sha256": "0e9a43c8a4b94ac76f55069ed1d7385bbcaf6b99527a94deb5619e032b7e76c1",
+    "files": 4
+  },
+  {
+    "name": "Noto Sans Mono",
+    "license": "SIL OFL 1.1",
+    "url": "https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSansMono-v2.014/NotoSansMono-v2.014.zip",
+    "sha256": "090cf6c5e03f337a755630ca888b1fef463e64ae7b33ee134e9309c05f978732",
+    "files": 1
+  },
+  {
+    "name": "MuPDF",
+    "license": "AGPL-3.0-or-later",
+    "url": "https://mupdf.com/downloads/archive/mupdf-1.24.11-source.tar.gz",
+    "sha256": "191227b96775f6705ef7d9551187511932b519273b34535a331491cf7d98163f",
+    "files": 5781
+  }
+]
