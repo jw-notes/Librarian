@@ -27,6 +27,8 @@ extern "C" int32_t sceSslTerm(int32_t id);
 // The toolchain declares these without their parameters.
 extern "C" int32_t lib_http_set_auto_redirect(int32_t id, int32_t enable) __asm__("sceHttpSetAutoRedirect");
 extern "C" int32_t lib_http_set_recv_timeout(int32_t id, uint32_t usec) __asm__("sceHttpSetRecvTimeOut");
+// Declared without arguments in the OpenOrbis headers.
+extern "C" int32_t lib_http_set_header_max(int32_t id, size_t size) __asm__("sceHttpSetResponseHeaderMaxSize");
 
 namespace lib {
 
@@ -105,6 +107,10 @@ bool http_init() {
     sceHttpSetResolveTimeOut(g_template, 10 * 1000000);
     sceHttpSetSendTimeOut(g_template, 30 * 1000000);
     lib_http_set_auto_redirect(g_template, 0);
+    // Some servers answer with large headers (github.com: ~6 KB, a 4 KB
+    // Content-Security-Policy), which the default limit refuses (0x80431073).
+    const int32_t hm = lib_http_set_header_max(g_template, 64 * 1024);
+    if (hm < 0) LOG("http: response header limit not raised (0x%08x)", (unsigned)hm);
     return true;
 }
 

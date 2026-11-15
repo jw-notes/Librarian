@@ -107,6 +107,7 @@ void* download_main(void*) {
     lib::HttpRequest r;
     r.url = url;
     r.timeout_seconds = 60;
+    if (url.find("/releases/assets/") != std::string::npos) r.headers.emplace_back("Accept", "application/octet-stream");
     auto progress = [](uint64_t done, uint64_t total) {
         g_done = done;
         if (total) g_total = total;
@@ -114,11 +115,11 @@ void* download_main(void*) {
     };
     lib::HttpResponse resp = lib::http_download(r, temp, progress, true);
     if (!resp.ok() && resp.status < 0 && !g_cancel && !sha.empty()) {
-        // GitHub keeps release files on release-assets.githubusercontent.com,
-        // whose certificate (Let's Encrypt, ISRG Root X1) the console does not
-        // know: the connection is refused (0x80431073 on firmware 14.00). The
-        // file is fetched again without that check; it is accepted only if it
-        // matches the SHA-256 api.github.com gave over a checked connection.
+        // GitHub keeps release files on release-assets.githubusercontent.com
+        // (a Let's Encrypt certificate, ISRG Root X1), which older console
+        // firmware may not know. The file is fetched again without that check;
+        // it is accepted only if it matches the SHA-256 api.github.com gave
+        // over a checked connection.
         LOG("update: %s; trying again without the certificate check (the file is checked by its SHA-256)",
             resp.error.c_str());
         r.verify_certificate = false;
@@ -200,7 +201,13 @@ bool parse_release(const std::string& json, std::string& tag, std::string& url, 
     for (const lib::Json& a : j["assets"].items()) {
         const std::string name = a["name"].str();
         if (!lib::ends_with(lib::lower(name), ".pkg")) continue;
-        url = a["browser_download_url"].str();
+        // The file through the API ("releases/assets/<id>", asked for as
+        // application/octet-stream): its redirect to the file host is small.
+        // github.com's own download link answers with ~6 KB of headers, more
+        // than the console's HTTP library accepts (0x80431073, "response
+        // header too large").
+        url = a["url"].str();
+        if (url.find("/releases/assets/") == std::string::npos) url = a["browser_download_url"].str();
         size = (uint64_t)a["size"].integer(0);
         // GitHub publishes a digest for each file it stores ("sha256:...").
         const std::string digest = a["digest"].str();
